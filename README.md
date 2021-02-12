@@ -1,5 +1,5 @@
 # Cookiecutter DataLab
-## Version 0.0.0
+## Version 1.0.0
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 
