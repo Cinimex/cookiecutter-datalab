@@ -1,0 +1,9 @@
+[tool.commitizen]
+# name = "cz_conventional_jira"
+bump_message = "release $current_version → $new_version"
+version = "0.1.0"
+version_files = [
+    "setup.py:version",
+    "README.md:# Version"
+]
+

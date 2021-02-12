@@ -1,9 +1,8 @@
-# Cookiecutter Data Science
+# Cookiecutter DataLab
+## Version 0.0.0
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 
-
-#### [Project homepage](http://drivendata.github.io/cookiecutter-data-science/)
 
 
 ### Requirements to use the cookiecutter template:
@@ -26,11 +25,7 @@ $ conda install cookiecutter
 ### To start a new project, run:
 ------------
 
-    cookiecutter https://github.com/drivendata/cookiecutter-data-science
-
-
-[![asciicast](https://asciinema.org/a/244658.svg)](https://asciinema.org/a/244658)
-
+    cookiecutter https://src.cinimex.ru/DLR/cookiecutter-datalab.git
 
 ### The resulting directory structure
 ------------
@@ -84,10 +79,13 @@ The directory structure of your new project looks like this:
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 ```
 
-## Contributing
+### Templeate architecture
 
-We welcome contributions! [See the docs for guidelines](https://drivendata.github.io/cookiecutter-data-science/#contributing).
-
+* `conda` – dependency management
+* `black` – code formatting
+* `src.cinimex.ru Gitlab CI` – CI/CD tool
+* `artifactory.cinimex.ru` – package repository
+* 
 ### Installing development requirements
 ------------
 
