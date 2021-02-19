@@ -31,7 +31,7 @@ before_script:
 test:
   script:
   - pip install -e .
-  - pytest --mypy --cov {{ cookiecutter.project_name }} --cov-report xml:cov.xml --cov-report term-missing --verbose
+  - pytest --verbose
 
 artifactory:
   script:

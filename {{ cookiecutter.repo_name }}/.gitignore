@@ -196,3 +196,4 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+.init.lock

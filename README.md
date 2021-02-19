@@ -3,7 +3,16 @@
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 
+### Quick commands
+This template provides quick commands for common actions.
 
+* `make init` – create and activate conda environment
+* `make a` – activate conda environment
+* `make c` –  create conventional commit message, bump versions and commit to git repo
+* `make p` – push to `develop` branch
+* `make push-master` – push to `master` branch
+
+See `Makefile` for more details.
 
 ### Requirements to use the cookiecutter template:
 -----------

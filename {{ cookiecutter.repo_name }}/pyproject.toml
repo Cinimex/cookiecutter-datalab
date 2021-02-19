@@ -1,0 +1,34 @@
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--mypy --cov src/{{ cookiecutter.project_name }} --cov-report xml:cov.xml --cov-report term-missing"
+testpaths = [
+    "tests",
+]
+
+# any custom black config goes here
+# [tool.black]
+# line-length = 88
+# target-version = ['py37']
+# include = '\.pyi?$'
+# exclude = '''
+
+# (
+#   /(
+#       \.eggs         # exclude a few common directories in the
+#     | \.git          # root of the project
+#     | \.hg
+#     | \.mypy_cache
+#     | \.tox
+#     | \.venv
+#     | _build
+#     | buck-out
+#     | build
+#     | dist
+#   )/
+#   | foo.py           # also separately exclude a file named foo.py in
+#                      # the root of the project
+# )
+# '''
+
+# as of 2021-02-16, mypy does not support pyproject.toml, so see mypy.ini
+# https://github.com/python/mypy/issues/5205

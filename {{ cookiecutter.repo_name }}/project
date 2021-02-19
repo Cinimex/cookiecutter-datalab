@@ -1,0 +1,99 @@
+#!/usr/bin/env python
+
+import argparse
+import os
+import json
+import subprocess
+
+CONDA_ACTIVATE_CMD = "conda activate {{ cookiecutter.project_name }}"
+COMMIT_CMD = "cz c && cz bump --changelog"
+PUSH_DEV_CMD = "git push --tags origin develop"
+PUSH_MASTER_CMD = "git push --tags origin master"
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        usage="project [init | a (activate) | c (commit) | p (push) | push-master]",
+        description="Useful shortcuts for your project",
+    )
+
+    subparsers = parser.add_subparsers(dest="command")
+
+    parser_init = subparsers.add_parser(
+        "init", help="initialize git, conda environment and precommit"
+    )
+
+    parser_commit = subparsers.add_parser(
+        "commit",
+        aliases=["c"],
+        help="create conventional commit message, bump version, update changelog and make git commit",
+    )
+
+    parser_commit.add_argument(
+        "-i", help="launch interatcive git add", dest="interactive", action="store_true"
+    )
+
+    parser_commit.add_argument(
+        "-A", help="add all files to staging", dest="all", action="store_true"
+    )
+
+    parser_push_dev = subparsers.add_parser(
+        "push-dev",
+        aliases=["p"],
+        help="push to develop",
+    )
+
+    parser_push_dev = subparsers.add_parser(
+        "push-master",
+        help="push to master",
+    )
+
+    return parser.parse_args()
+
+
+def init(args: argparse.Namespace):
+    os.system("git init")
+    os.system("conda env create -f ./environment.yml")
+    activate(args)
+    os.system("pre-commit install")
+
+
+def commit(args: argparse.Namespace):
+    if args.interactive:
+        os.system("git add -i")
+    if args.all:
+        os.system("git add -A")
+    
+    os.system(COMMIT_CMD)
+
+
+def activate(args: argparse.Namespace):
+    if not is_conda_active():
+        os.system("conda activate {{ cookiecutter.project_name }}")
+
+
+def push_dev(args: argparse.Namespace):
+    os.system(PUSH_DEV_CMD)
+
+
+def push_master(args: argparse.Namespace):
+    os.system(PUSH_MASTER_CMD)
+
+
+def is_conda_active():
+    conda_info = json.loads(subprocess.check_output(["conda", "info", "--json"]))
+    return conda_info["active_prefix"] != None
+
+
+if __name__ == "__main__":
+    args = parse_args()
+
+    cmd = args.command
+    if cmd == "init":
+        init(args)
+    elif cmd == "c" or cmd == "commit":
+        commit(args)
+    elif cmd == "p" or cmd == "push-dev":
+        push_dev(args)
+    elif cmd == "push-master":
+        push_master(args)
