@@ -3,38 +3,40 @@
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
 
-### Quick commands
+## How to use?
+
+1. `pipx install cookiecutter` or `pip install cookiecutter`
+1. `cookiecutter https://src.cinimex.ru/DLR/cookiecutter-datalab.git`
+
+### Features
+
+* Gitlab CI config
+* Cinimex Artifactory config
+* mypy and pre-commit config
+* Useful shortcuts script
+* Source formatting with `black`
+* `nbqa` runs `black` and `mypy` on notebooks
+
+### Shortcuts
 This template provides quick commands for common actions.
 
-* `make init` – create and activate conda environment
-* `make a` – activate conda environment
-* `make c` –  create conventional commit message, bump versions and commit to git repo
-* `make p` – push to `develop` branch
-* `make push-master` – push to `master` branch
-
-See `Makefile` for more details.
-
-### Requirements to use the cookiecutter template:
------------
- - Python 2.7 or 3.5+
- - [Cookiecutter Python package](http://cookiecutter.readthedocs.org/en/latest/installation.html) >= 1.4.0: This can be installed with pip by or conda depending on how you manage your Python packages:
-
-``` bash
-$ pip install cookiecutter
 ```
+project --help     
+usage: project [init | c (commit) | p (push) | push-master]
 
-or
+Useful shortcuts for your project
 
-``` bash
-$ conda config --add channels conda-forge
-$ conda install cookiecutter
+positional arguments:
+  {init,commit,c,push-dev,p,push-master}
+    init                initialize git, conda environment and precommit
+    commit (c)          create conventional commit message, bump version,
+                        update changelog and make git commit
+    push-dev (p)        push to develop
+    push-master         push to master
+
+optional arguments:
+  -h, --help            show this help message and exit
 ```
-
-
-### To start a new project, run:
-------------
-
-    cookiecutter https://src.cinimex.ru/DLR/cookiecutter-datalab.git
 
 ### The resulting directory structure
 ------------
@@ -88,13 +90,6 @@ The directory structure of your new project looks like this:
 └── tox.ini            <- tox file with settings for running tox; see tox.readthedocs.io
 ```
 
-### Templeate architecture
-
-* `conda` – dependency management
-* `black` – code formatting
-* `src.cinimex.ru Gitlab CI` – CI/CD tool
-* `artifactory.cinimex.ru` – package repository
-* 
 ### Installing development requirements
 ------------
 
