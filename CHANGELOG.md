@@ -1,3 +1,8 @@
+## 1.1.0 (2021-02-19)
+
+### Feat
+
+- added new project script with shortcut commands
 
 ## 1.0.0 (2021-02-12)
 
