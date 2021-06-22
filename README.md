@@ -1,4 +1,7 @@
 # Cookiecutter DataLab
+
+A modification of https://github.com/drivendata/cookiecutter-data-science
+
 ## Version 1.1.1
 
 _A logical, reasonably standardized, but flexible project structure for doing and sharing data science work._
